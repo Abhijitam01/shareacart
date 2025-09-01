@@ -7,22 +7,18 @@ export const Breadcrumb: React.FC = () => {
   const pathSegments = location.pathname.split('/').filter(Boolean);
 
   const getBreadcrumbItems = () => {
-    const breadcrumbs: { label: string; icon?: string }[] = [];
+    const breadcrumbs: string[] = [];
     
     // Handle special routes
     if (pathSegments[0] === 'sitemap-approval') {
-      breadcrumbs.push({ label: 'Sitemap Approval Tool', icon: '📋' });
+      breadcrumbs.push('Sitemap Approval Tool');
       return breadcrumbs;
     }
     
     if (pathSegments.length >= 1) {
       const portal = NAVIGATION_DATA.find(p => p.id === pathSegments[0]);
       if (portal) {
-        const icons = { customer: '👤', vendor: '🏪', admin: '⚡' };
-        breadcrumbs.push({ 
-          label: portal.label, 
-          icon: icons[portal.id as keyof typeof icons] 
-        });
+        breadcrumbs.push(portal.label);
       }
     }
     
@@ -30,7 +26,7 @@ export const Breadcrumb: React.FC = () => {
       const portal = NAVIGATION_DATA.find(p => p.id === pathSegments[0]);
       const section = portal?.sections.find(s => s.id === pathSegments[1]);
       if (section) {
-        breadcrumbs.push({ label: section.label });
+        breadcrumbs.push(section.label);
       }
     }
     
@@ -39,7 +35,7 @@ export const Breadcrumb: React.FC = () => {
       const section = portal?.sections.find(s => s.id === pathSegments[1]);
       const item = section?.items.find(i => i.path.endsWith(pathSegments[2]));
       if (item) {
-        breadcrumbs.push({ label: item.label });
+        breadcrumbs.push(item.label);
       }
     }
     
@@ -48,38 +44,26 @@ export const Breadcrumb: React.FC = () => {
 
   const breadcrumbs = getBreadcrumbItems();
 
-  if (breadcrumbs.length === 0) {
-    return (
-      <nav className="flex items-center space-x-2">
-        <div className="flex items-center space-x-2 px-3 py-1.5 rounded-lg bg-primary/10 border border-primary/20">
-          <span className="text-lg">🏠</span>
-          <span className="text-primary font-medium text-sm">Home</span>
-        </div>
-      </nav>
-    );
-  }
-
   return (
-    <nav className="flex items-center space-x-2 text-sm">
-      {breadcrumbs.map((item, index) => (
-        <React.Fragment key={index}>
-          {index > 0 && (
-            <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          )}
-          <div 
-            className={`flex items-center space-x-2 px-3 py-1.5 rounded-lg transition-all duration-200 ${
-              index === breadcrumbs.length - 1 
-                ? 'bg-primary/20 border border-primary/30 text-primary font-medium shadow-sm' 
-                : 'bg-white/5 text-gray-300 hover:bg-white/10'
-            }`}
-          >
-            {item.icon && <span className="text-base">{item.icon}</span>}
-            <span className="whitespace-nowrap">{item.label}</span>
-          </div>
-        </React.Fragment>
-      ))}
+    <nav className="text-gray-400 text-sm overflow-hidden">
+      {breadcrumbs.length === 0 ? (
+        <span className="text-primary font-medium">Home</span>
+      ) : (
+        <div className="flex items-center space-x-2 min-w-0">
+          {breadcrumbs.map((item, index) => (
+            <React.Fragment key={index}>
+              {index > 0 && <span className="text-gray-500 flex-shrink-0">→</span>}
+              <span 
+                className={`truncate ${
+                  index === breadcrumbs.length - 1 ? 'text-primary font-medium' : ''
+                }`}
+              >
+                {item}
+              </span>
+            </React.Fragment>
+          ))}
+        </div>
+      )}
     </nav>
   );
 };
