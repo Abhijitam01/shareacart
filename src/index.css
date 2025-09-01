@@ -11,15 +11,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #000000;
   color: white;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 * {
   box-sizing: border-box;
 }
 
-/* Custom scrollbar */
+/* Enhanced mobile scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 4px;
 }
 
 ::-webkit-scrollbar-track {
@@ -27,10 +29,60 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 4px;
+  background: #FFD700;
+  border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: #e6c200;
+}
+
+@layer components {
+  /* Mobile-optimized button styles */
+  .btn-mobile {
+    @apply transition-all duration-200 ease-out transform active:scale-95 active:bg-opacity-80;
+    min-height: 44px;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Smooth expand/collapse animations */
+  .expand-smooth {
+    @apply transition-all duration-300 ease-out;
+  }
+  
+  /* Mobile-friendly card hover */
+  .card-mobile {
+    @apply transition-all duration-200 ease-out;
+  }
+  
+  .card-mobile:active {
+    @apply transform scale-[0.98] bg-opacity-90;
+  }
+  
+  /* Touch-friendly checkbox */
+  .checkbox-mobile {
+    @apply w-5 h-5 transition-all duration-150 ease-out;
+    min-width: 20px;
+    min-height: 20px;
+  }
+  
+  /* Smooth text transitions */
+  .text-smooth {
+    @apply transition-colors duration-200 ease-out;
+  }
+}
+
+@layer utilities {
+  /* Prevent text selection on mobile interactions */
+  .touch-none {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  
+  /* Smooth momentum scrolling */
+  .scroll-smooth-mobile {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
 }

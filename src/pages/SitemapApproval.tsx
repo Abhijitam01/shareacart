@@ -157,25 +157,28 @@ export const SitemapApproval: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-bg-primary text-white">
-      {/* Header */}
-      <div className="bg-bg-secondary border-b border-gray-700 px-6 py-4">
+      {/* Mobile-Optimized Header */}
+      <div className="bg-bg-secondary border-b border-gray-700 px-4 sm:px-6 py-3 sm:py-4 sticky top-0 z-10 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-3xl font-bold text-primary mb-2">Interactive Sitemap Approval Tool</h1>
-          <p className="text-gray-300">
-            Review, modify, and approve the complete ShareACart platform structure. 
-            Use checkboxes to include/exclude pages and add custom pages as needed.
+          <h1 className="text-lg sm:text-2xl lg:text-3xl font-bold text-primary mb-1 sm:mb-2 leading-tight">
+            Interactive Sitemap Tool
+          </h1>
+          <p className="text-xs sm:text-sm lg:text-base text-gray-300 leading-relaxed">
+            Review and approve the ShareACart platform structure
           </p>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 py-3 sm:py-4 lg:py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-8">
           {/* Main Content - Tree View */}
-          <div className="lg:col-span-2 space-y-8">
+          <div className="lg:col-span-2 space-y-4 sm:space-y-6 lg:space-y-8 order-2 lg:order-1">
             <div>
-              <h2 className="text-2xl font-bold text-white mb-4">Sitemap Structure</h2>
-              <p className="text-gray-400 mb-6">
-                Expand sections to view pages. Check/uncheck pages to include or exclude them from the final sitemap.
+              <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-2 sm:mb-3 lg:mb-4">
+                Sitemap Structure
+              </h2>
+              <p className="text-xs sm:text-sm lg:text-base text-gray-400 mb-3 sm:mb-4 lg:mb-6 leading-relaxed">
+                Tap to expand sections and toggle page selections
               </p>
               <TreeView
                 portals={portals}
@@ -187,14 +190,16 @@ export const SitemapApproval: React.FC = () => {
 
             {/* Add Page Form */}
             <div>
-              <h2 className="text-2xl font-bold text-white mb-4">Add Custom Page</h2>
+              <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-2 sm:mb-3 lg:mb-4">
+                Add Custom Page
+              </h2>
               <AddPageForm onAddPage={handleAddPage} />
             </div>
           </div>
 
-          {/* Summary Panel */}
-          <div className="lg:col-span-1">
-            <div className="sticky top-8">
+          {/* Mobile-First Summary Panel */}
+          <div className="lg:col-span-1 order-1 lg:order-2">
+            <div className="lg:sticky lg:top-20">
               <SummarySection
                 summary={summary}
                 onExportPDF={handleExportPDF}
