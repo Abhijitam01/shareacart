@@ -169,9 +169,9 @@ export const SitemapApproval: React.FC = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 py-8">
-        <div className="grid grid-cols-1 xl:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Main Content - Tree View */}
-          <div className="xl:col-span-3 space-y-6">
+          <div className="lg:col-span-2 space-y-8">
             <div>
               <h2 className="text-2xl font-bold text-white mb-4">Sitemap Structure</h2>
               <p className="text-gray-400 mb-6">
@@ -192,8 +192,8 @@ export const SitemapApproval: React.FC = () => {
             </div>
           </div>
 
-          {/* Sidebar - Summary */}
-          <div className="xl:col-span-1">
+          {/* Summary Panel */}
+          <div className="lg:col-span-1">
             <div className="sticky top-8">
               <SummarySection
                 summary={summary}

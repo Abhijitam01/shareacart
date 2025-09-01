@@ -99,10 +99,10 @@ export const AddPageForm: React.FC<AddPageFormProps> = ({ onAddPage }) => {
             </select>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-3">
+          <div className="flex gap-3">
             <button
               type="submit"
-              className="px-4 py-2 bg-primary text-black font-medium rounded-md hover:bg-yellow-500 transition-colors whitespace-nowrap"
+              className="px-6 py-2 bg-primary text-black font-medium rounded-md hover:bg-yellow-500 transition-colors"
             >
               Add Page
             </button>
@@ -112,7 +112,7 @@ export const AddPageForm: React.FC<AddPageFormProps> = ({ onAddPage }) => {
                 setFormData({ name: '', description: '', portal: 'customer' });
                 setIsExpanded(false);
               }}
-              className="px-4 py-2 bg-gray-700 text-white font-medium rounded-md hover:bg-gray-600 transition-colors whitespace-nowrap"
+              className="px-6 py-2 bg-gray-700 text-white font-medium rounded-md hover:bg-gray-600 transition-colors"
             >
               Cancel
             </button>
