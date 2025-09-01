@@ -174,7 +174,7 @@ The Interactive Sitemap Approval Tool is a client collaboration feature that all
 
 ```bash
 # Navigate to the tool
-http://localhost:5173/sitemap-approval
+https://www.foundershunt.xyz
 
 # Or from landing page
 Click "📋 Sitemap Approval Tool"
